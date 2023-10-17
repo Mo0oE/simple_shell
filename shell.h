@@ -18,7 +18,7 @@ int _strlen(char *str);
 int _strcmp(char *str1, char *str2);
 void _strcpy(char *dest, char *src);
 char *_strdup(char *str);
-char *_strcat(char *str1, char *str2);
+void _strcat(char *str1, char *str2);
 
 /*strings2.c*/
 void _puts(char *str);

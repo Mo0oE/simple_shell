@@ -44,11 +44,10 @@ int _strcmp(char *str1, char *str2)
  * _strcat - A Function The Concates 2 Strings
  * @str1: The First String
  * @str2: The Second String
- *
- * Return: A String Contains Both of Them
+ * Description: A String Contains Both of Them
  */
 
-char *_strcat(char *str1, char *str2)
+void _strcat(char *str1, char *str2)
 {
 	char *end_of_str1 = str1;
 

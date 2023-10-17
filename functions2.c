@@ -52,9 +52,8 @@ void interactive_shell(char **envp)
 
 void non_interactive_shell(char **envp)
 {
-	char *input_line, *prog_path;
+	char *prog_path;
 	char **input_args;
-	int shell_status = 1;
 
 	char buffer[BUFFER_SIZE];
 	ssize_t bytes_read;

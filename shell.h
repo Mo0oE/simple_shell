@@ -9,11 +9,15 @@
 #include <ctype.h>
 
 
-
 #define TOKENS_BUFFER 128
 #define BUFFER_SIZE 1024
 #define MAX_INPUT_LENGTH 1024
 
+int _strlen(char *str);
+int _strcmp(char *str1, char *str2);
+void _strcpy(char *dest, char *src);
+char *_strdup(char *str);
+char *_strcat(char *str1, char *str2);
 
 char **get_shell_args(char *shell_line);
 char *get_shell_line(void);

@@ -19,7 +19,7 @@ char *get_shell_line(void)
 
 	input[bytes_read - 1] = '\0';
 
-	input_line = strdup(input);
+	input_line = _strdup(input);
 	if (input_line == NULL)
 	{
 		perror("Error: Failed to allocate memory");
@@ -55,7 +55,7 @@ char **get_shell_args(char *shell_line)
 	{
 		if (strcmp(tmp_token, "") != 0)
 		{
-			tokens[i] = strdup(tmp_token);
+			tokens[i] = _strdup(tmp_token);
 			i++;
 		}
 		if (i == buffer_size)
@@ -77,44 +77,6 @@ char **get_shell_args(char *shell_line)
 	}
 	tokens[i] = NULL;
 	return (tokens);
-}
-
-/**
- * is_cd - a function to handel the cd command
- * @input_arg: the tokens of input command line
- * @input_line: the original line of input
- * Return: 0 if not a cd command and a 1 otherwise
- */
-
-int is_cd(char **input_arg, char *input_line)
-{
-	if (strcmp(input_arg[0], "cd") == 0)
-	{
-		if (input_arg[1] == NULL)
-		{
-			perror("No argument for cd");
-			free(input_line);
-			free_my_array(input_arg);
-			free(input_arg);
-			return (0);
-		}
-		else
-		{
-			if (chdir(input_arg[1]) != 0)
-			{
-				perror("chdir error");
-				free(input_line);
-				free_my_array(input_arg);
-				free(input_arg);
-				return (0);
-			}
-		}
-		free(input_line);
-		free_my_array(input_arg);
-		free(input_arg);
-		return (0);
-	}
-	return (1);
 }
 
 /**

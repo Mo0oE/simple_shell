@@ -28,14 +28,16 @@ void interactive_shell(char **envp)
 			continue;
 		if (!is_env(input_args, input_line, envp))
 			continue;
-		prog_path = malloc(strlen(input_args[0]) + strlen("/bin/") + 1);
+		if (!is_help(input_args, input_line))
+			continue;
+		prog_path = malloc(_strlen(input_args[0]) + _strlen("/bin/") + 1);
 		if (prog_path == NULL)
 		{
 			perror("malloc error");
 			exit(EXIT_FAILURE);
 		}
-		strcpy(prog_path, "/bin/");
-		strcat(prog_path, input_args[0]);
+		_strcpy(prog_path, "/bin/");
+		_strcat(prog_path, input_args[0]);
 		free(input_line);
 		shell_excute(prog_path, input_args, envp);
 		free_my_array(input_args);
@@ -64,73 +66,18 @@ void non_interactive_shell(char **envp)
 		input_args = get_shell_args(buffer);
 		if (input_args != NULL)
 		{
-			prog_path = malloc(strlen(input_args[0]) + strlen("/bin/") + 1);
+			prog_path = malloc(_strlen(input_args[0]) + _strlen("/bin/") + 1);
 			if (prog_path == NULL)
 			{
 				perror("malloc error");
 				exit(EXIT_FAILURE);
 			}
-			strcpy(prog_path, "/bin/");
-			strcat(prog_path, input_args[0]);
+			_strcpy(prog_path, "/bin/");
+			_strcat(prog_path, input_args[0]);
 			shell_excute(prog_path, input_args, envp);
 			free_my_array(input_args);
 			free(input_args);
 			free(prog_path);
 		}
 	}
-}
-
-/**
- * is_env - the function to handle the env command
- * @input_args: the array of arrguments
- * @input_line: the original input line
- * @envp: the environment variables array
- * Return: 0 if env or 1 otherwise
-*/
-
-int is_env(char **input_args, char *input_line, char *envp[])
-{
-	if (strcmp(input_args[0], "env") == 0)
-	{
-		int i = 0;
-
-		while (envp[i] != NULL)
-		{
-			printf("%s\n", envp[i]);
-			i++;
-		}
-		free(input_line);
-		free_my_array(input_args);
-		free(input_args);
-		return (0);
-	}
-
-	return (1);
-}
-
-/**
- * is_exit - the function to handle the exit command
- * @input_args: the array of arrguments
- * @input_line: the original input line
- * Return: 0 if env or 1 otherwise
-*/
-
-
-int is_exit(char **input_args, char *input_line)
-{
-	if (strcmp(input_args[0], "exit") == 0)
-	{
-		if (input_args[1] == NULL)
-		{
-			free(input_line);
-			free_my_array(input_args);
-			free(input_args);
-			exit(EXIT_SUCCESS);
-		}
-		else
-		{
-			return (0);
-		}
-	}
-	return (1);
 }

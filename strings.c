@@ -50,27 +50,21 @@ int _strcmp(char *str1, char *str2)
 
 char *_strcat(char *str1, char *str2)
 {
-	char *result = NULL;
-	int i, len1 = 0, len2 = 0;
+	char *end_of_str1 = str1;
 
-	while (str1[len1] != '\0')
-		len1++;
+	while (*end_of_str1 != '\0')
+	{
+		end_of_str1++;
+	}
 
-	while (str2[len2] != '\0')
-		len2++;
+	while (*str2 != '\0')
+	{
+		*end_of_str1 = *str2;
+		end_of_str1++;
+		str2++;
+	}
 
-	result = (char *)malloc(len1 + len2 + 1);
-	if (result == NULL)
-		return (NULL);
-
-	for (i = 0; i < len1; i++)
-		result[i] = str1[i];
-
-	for (i = 0; i < len2; i++)
-		result[len1 + i] = str2[i];
-
-	result[len1 + len2] = '\0';
-	return (result);
+	*end_of_str1 = '\0';
 }
 
 /**
@@ -115,4 +109,3 @@ void _strcpy(char *dest, char *src)
 	}
 	*dest = '\0';
 }
-

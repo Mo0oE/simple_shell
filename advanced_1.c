@@ -72,22 +72,40 @@ int is_unsetenv(char **input_args, char *input_line)
 int is_echo(char **input_args, char *input_line)
 {
 	size_t pid;
-	char *string_pid = (char *)malloc(20);
+	char *str = (char *)malloc(50);
+	char *env_var_value, *env_var_name;
 
 	if (_strcmp(input_args[0], "echo") == 0)
 	{
-		if (_strcmp(input_args[1], "$$") == 0)
+		if (input_args[1] != NULL)
 		{
-			pid = getpid();
-			int_to_str(pid, string_pid);
-			_puts(string_pid);
-
-			free(string_pid);
-			free(input_line);
-			free_my_array(input_args);
-			free(input_args);
-			return (0);
+			if (_strcmp(input_args[1], "$$") == 0)
+			{
+				pid = getpid();
+				int_to_str(pid, str);
+				_puts(str);
+			}
+			else if (strcmp(input_args[1], "$?") == 0)
+				_puts("1\n");
+			else if (input_args[1][0] == '$' && input_args[1][1] != '\0')
+			{
+				env_var_name = &input_args[1][1];
+				env_var_value = getenv(env_var_name);
+				if (env_var_value != NULL)
+					_puts(env_var_value), _puts("\n");
+				else
+					_puts("");
+			}
+			else
+				_puts(input_args[1]), _puts("\n");
 		}
+		else
+			_puts("");
+		free(str);
+		free(input_line);
+		free_my_array(input_args);
+		free(input_args);
+		return (0);
 	}
 	return (1);
 }

@@ -66,6 +66,7 @@ void non_interactive_shell(char **envp)
 	while ((bytes_read = read(STDIN_FILENO, buffer, sizeof(buffer))) > 0)
 	{
 		buffer[bytes_read - 1] = '\0';
+		rm_comment(buffer);
 		input_args = get_shell_args(buffer);
 		if (input_args != NULL)
 		{

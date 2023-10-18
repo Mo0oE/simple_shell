@@ -107,5 +107,6 @@ int is_echo(char **input_args, char *input_line)
 		free(input_args);
 		return (0);
 	}
+	free(str);
 	return (1);
 }

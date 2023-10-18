@@ -22,6 +22,7 @@ void _strcat(char *str1, char *str2);
 
 /*strings2.c*/
 void _puts(char *str);
+void rm_comment(char *str);
 
 /*built-ins.c*/
 int is_cd(char **input_arg, char *input_line);

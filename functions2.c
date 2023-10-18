@@ -16,6 +16,7 @@ void interactive_shell(char **envp)
 	{
 		write(STDOUT_FILENO, "myprompt$ ", 10);
 		input_line = get_shell_line();
+		rm_comment(input_line);
 		input_args = get_shell_args(input_line);
 		if (!input_args)
 		{

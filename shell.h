@@ -39,4 +39,8 @@ void free_my_array(char **args);
 void non_interactive_shell(char **envp);
 void interactive_shell(char **envp);
 
+/*advanced_1.c*/
+int is_setenv(char **input_args, char *input_line);
+int is_unsetenv(char **input_args, char *input_line);
+
 #endif

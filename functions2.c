@@ -4,7 +4,7 @@
  * interactive_shell - controll the shell in the non interactive mode
  * @envp: the evironment array
  * Description: handle the shell
-*/
+ */
 
 void interactive_shell(char **envp)
 {
@@ -30,19 +30,19 @@ void interactive_shell(char **envp)
 			continue;
 		if (!is_help(input_args, input_line))
 			continue;
+		if (!is_setenv(input_args, input_line))
+			continue;
+		if (!is_unsetenv(input_args, input_line))
+			continue;
 		prog_path = malloc(_strlen(input_args[0]) + _strlen("/bin/") + 1);
 		if (prog_path == NULL)
-		{
-			perror("malloc error");
-			exit(EXIT_FAILURE);
-		}
+			perror("malloc error"), exit(EXIT_FAILURE);
+
 		_strcpy(prog_path, "/bin/");
 		_strcat(prog_path, input_args[0]);
 		free(input_line);
 		shell_excute(prog_path, input_args, envp);
-		free_my_array(input_args);
-		free(input_args);
-		free(prog_path);
+		free_my_array(input_args), free(input_args), free(prog_path);
 	}
 }
 
@@ -50,7 +50,7 @@ void interactive_shell(char **envp)
  * non_interactive_shell - controll the shell in the non interactive mode
  * @envp: the evironment array
  * Description: handle the shell
-*/
+ */
 
 void non_interactive_shell(char **envp)
 {

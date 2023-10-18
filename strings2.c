@@ -30,8 +30,16 @@ void rm_comment(char *str)
 	{
 		if (str[i] == '#' && (i != 0 || str[i - 1] == ' '))
 		{
-			str[i] = '\0';
-			break;
+			if (str[i - 1] == ' ')
+			{
+				str[i - 1] = '\0';
+				break;
+			}
+			else
+			{
+				str[i] = '\0';
+				break;
+			}
 		}
 	}
 }

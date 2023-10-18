@@ -7,25 +7,23 @@
 
 char *get_shell_line(void)
 {
-	char input[MAX_INPUT_LENGTH];
-	char *input_line;
-	ssize_t bytes_read = read(STDIN_FILENO, input, sizeof(input));
+	char *input_line = NULL;
+	size_t input_buffer_size = 0;
 
-	if (bytes_read == -1)
+	if (getline(&input_line, &input_buffer_size, stdin) == -1)
 	{
-		perror("Error: Failed to read input");
-		exit(EXIT_FAILURE);
+		if (feof(stdin))
+		{
+			free(input_line);
+			exit(EXIT_SUCCESS);
+		}
+		else
+		{
+			free(input_line);
+			perror("error while reading the line from stdin");
+			exit(EXIT_FAILURE);
+		}
 	}
-
-	input[bytes_read - 1] = '\0';
-
-	input_line = _strdup(input);
-	if (input_line == NULL)
-	{
-		perror("Error: Failed to allocate memory");
-		exit(EXIT_FAILURE);
-	}
-
 	return (input_line);
 }
 

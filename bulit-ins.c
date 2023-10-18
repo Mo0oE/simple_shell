@@ -9,7 +9,7 @@
 
 int is_help(char **input_arg, char *input_line)
 {
-	if (strcmp(input_arg[0], "help") == 0)
+	if (_strcmp(input_arg[0], "help") == 0)
 	{
 		_puts("This is the shell help menu.\nbulit-ins:\nenv\ncd\nhelp\nexit\n");
 		free(input_line);
@@ -29,7 +29,7 @@ int is_help(char **input_arg, char *input_line)
 
 int is_cd(char **input_arg, char *input_line)
 {
-	if (strcmp(input_arg[0], "cd") == 0)
+	if (_strcmp(input_arg[0], "cd") == 0)
 	{
 		if (input_arg[1] == NULL)
 		{
@@ -68,7 +68,7 @@ int is_cd(char **input_arg, char *input_line)
 
 int is_env(char **input_args, char *input_line, char *envp[])
 {
-	if (strcmp(input_args[0], "env") == 0)
+	if (_strcmp(input_args[0], "env") == 0)
 	{
 		int i = 0;
 
@@ -97,19 +97,12 @@ int is_env(char **input_args, char *input_line, char *envp[])
 
 int is_exit(char **input_args, char *input_line)
 {
-	if (strcmp(input_args[0], "exit") == 0)
+	if (_strcmp(input_args[0], "exit") == 0)
 	{
-		if (input_args[1] == NULL)
-		{
-			free(input_line);
-			free_my_array(input_args);
-			free(input_args);
-			exit(EXIT_SUCCESS);
-		}
-		else
-		{
-			return (0);
-		}
+		free(input_line);
+		free_my_array(input_args);
+		free(input_args);
+		exit(EXIT_SUCCESS);
 	}
 	return (1);
 }

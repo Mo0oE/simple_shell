@@ -53,7 +53,7 @@ char **get_shell_args(char *shell_line)
 
 	while (tmp_token)
 	{
-		if (strcmp(tmp_token, "") != 0)
+		if (_strcmp(tmp_token, "") != 0)
 		{
 			tokens[i] = _strdup(tmp_token);
 			i++;

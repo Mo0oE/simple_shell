@@ -28,10 +28,37 @@ void rm_comment(char *str)
 
 	for (i = 0; str[i] != '\0'; i++)
 	{
-		if (str[i] == '#' && i != 0 && str[i - 1] == ' ')
+		if (str[i] == '#' && (i != 0 || str[i - 1] == ' '))
 		{
 			str[i] = '\0';
 			break;
 		}
 	}
+}
+
+/**
+ * int_to_str - A Function To Convert Number to String
+ * @num: The Number To Convert
+ * @str: The String Output of The Function
+ */
+
+void int_to_str(size_t num, char *str)
+{
+	char temp;
+	int i = 0, j = 0;
+
+	while (num > 0)
+	{
+		str[i++] = num % 10 + '0';
+		num /= 10;
+	}
+	str[i] = '\0';
+
+	for (j = 0; j < i / 2; j++)
+	{
+		temp = str[j];
+		str[j] = str[i - j - 1];
+		str[i - j - 1] = temp;
+	}
+	str[i] = '\n';
 }

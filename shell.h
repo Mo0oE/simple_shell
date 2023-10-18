@@ -23,6 +23,7 @@ void _strcat(char *str1, char *str2);
 /*strings2.c*/
 void _puts(char *str);
 void rm_comment(char *str);
+void int_to_str(size_t num, char *str);
 
 /*built-ins.c*/
 int is_cd(char **input_arg, char *input_line);
@@ -43,5 +44,6 @@ void interactive_shell(char **envp);
 /*advanced_1.c*/
 int is_setenv(char **input_args, char *input_line);
 int is_unsetenv(char **input_args, char *input_line);
+int is_echo(char **input_args, char *input_line);
 
 #endif

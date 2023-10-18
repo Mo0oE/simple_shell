@@ -62,3 +62,32 @@ int is_unsetenv(char **input_args, char *input_line)
 	return (1);
 }
 
+/**
+ * is_echo - A Function To Print
+ * @input_args: the array of arrguments
+ * @input_line: the original input line
+ * Return: 0 if Success or 1 otherwise
+ */
+
+int is_echo(char **input_args, char *input_line)
+{
+	size_t pid;
+	char *string_pid = (char *)malloc(20);
+
+	if (_strcmp(input_args[0], "echo") == 0)
+	{
+		if (_strcmp(input_args[1], "$$") == 0)
+		{
+			pid = getpid();
+			int_to_str(pid, string_pid);
+			_puts(string_pid);
+
+			free(string_pid);
+			free(input_line);
+			free_my_array(input_args);
+			free(input_args);
+			return (0);
+		}
+	}
+	return (1);
+}

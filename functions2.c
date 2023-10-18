@@ -35,6 +35,8 @@ void interactive_shell(char **envp)
 			continue;
 		if (!is_unsetenv(input_args, input_line))
 			continue;
+		if (!is_echo(input_args, input_line))
+			continue;
 		prog_path = malloc(_strlen(input_args[0]) + _strlen("/bin/") + 1);
 		if (prog_path == NULL)
 			perror("malloc error"), exit(EXIT_FAILURE);

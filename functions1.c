@@ -47,7 +47,7 @@ char **get_shell_args(char *shell_line)
 		exit(EXIT_FAILURE);
 	}
 
-	tmp_token = strtok(shell_line, delim);
+	tmp_token = _strtok(shell_line, delim);
 
 	while (tmp_token)
 	{
@@ -66,7 +66,7 @@ char **get_shell_args(char *shell_line)
 				exit(EXIT_FAILURE);
 			}
 		}
-		tmp_token = strtok(NULL, delim);
+		tmp_token = _strtok(NULL, delim);
 	}
 	if (i == 0)
 	{

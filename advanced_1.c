@@ -109,3 +109,52 @@ int is_echo(char **input_args, char *input_line)
 	}
 	return (1);
 }
+
+/**
+ * _strtok - A Function That Simulate strtok Function
+ * @str: The string To Tokenize
+ * @delim: The Delimeter
+ *
+ * Return: The String Tokenized
+ */
+
+char *_strtok(char *str, const char *delim)
+{
+	int i, j, isDelimiter = 0;
+	static char *input;
+	char *result;
+
+	if (str != NULL)
+		input = str;
+
+	if (input == NULL)
+		return (NULL);
+
+	result = (char *)malloc(_strlen(input) + 1);
+
+	for (i = 0; input[i] != '\0'; i++)
+	{
+		for (j = 0; delim[j] != '\0'; j++)
+		{
+			if (input[i] == delim[j])
+			{
+				isDelimiter = 1;
+				break;
+			}
+		}
+
+		if (!isDelimiter)
+			result[i] = input[i];
+		else
+		{
+			result[i] = '\0';
+			input = input + i + 1;
+			return (result);
+		}
+	}
+
+	result[i] = '\0';
+	input = NULL;
+
+	return (result);
+}

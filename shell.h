@@ -45,5 +45,6 @@ void interactive_shell(char **envp);
 int is_setenv(char **input_args, char *input_line);
 int is_unsetenv(char **input_args, char *input_line);
 int is_echo(char **input_args, char *input_line);
+char *_strtok(char *str, const char *delim);
 
 #endif

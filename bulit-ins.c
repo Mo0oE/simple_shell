@@ -24,7 +24,7 @@ int is_help(char **input_arg, char *input_line)
  * is_cd - a function to handel the cd command
  * @input_arg: the tokens of input command line
  * @input_line: the original line of input
- * Return: 0 if not a cd command and a 1 otherwise
+ * Return: 0 if a cd command and a 1 otherwise
  */
 
 int is_cd(char **input_arg, char *input_line)
@@ -91,7 +91,7 @@ int is_env(char **input_args, char *input_line, char *envp[])
  * is_exit - the function to handle the exit command
  * @input_args: the array of arrguments
  * @input_line: the original input line
- * Return: 0 if env or 1 otherwise
+ * Return: 0 if the command is exit or 1 otherwise
 */
 
 

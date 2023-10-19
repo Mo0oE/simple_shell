@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * main - fu
- * @argc: input int
- * @argv: input array of strings
+ * main - the entering point function
+ * @argc: number of args passed
+ * @argv: arguments
  * @envp: environment variables
  * Return: 1
  */

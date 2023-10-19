@@ -2,6 +2,7 @@
 
 /**
  * get_shell_line - function to get the input command
+ *
  * Return: The input string
  */
 
@@ -79,7 +80,7 @@ char **get_shell_args(char *shell_line)
 }
 
 /**
- * shell_excute - the function that excute the given command
+ * shell_excute - the function that excutes the given command
  * @path: the path of the program to be excuted
  * @args: the arguments to be excuted with the program
  * @envp: the environment variables

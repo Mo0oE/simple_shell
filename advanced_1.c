@@ -110,3 +110,38 @@ int is_echo(char **input_args, char *input_line)
 	free(str);
 	return (1);
 }
+
+
+/**
+ * _atoi - the function to convert a string to an integer
+ * @str: the string to be converted
+ * Return: the converted number
+*/
+
+int _atoi(char *str)
+{
+	int i, sign = 1, flag = 0, converted;
+	unsigned int tmp = 0;
+
+	for (i = 0;  str[i] != '\0' && flag != 2; i++)
+	{
+		if (str[i] == '-')
+			sign *= -1;
+
+		if (str[i] >= '0' && str[i] <= '9')
+		{
+			flag = 1;
+			tmp *= 10;
+			tmp += (str[i] - '0');
+		}
+		else if (flag == 1)
+			flag = 2;
+	}
+
+	if (sign == -1)
+		converted = -tmp;
+	else
+		converted = tmp;
+
+	return (converted);
+}

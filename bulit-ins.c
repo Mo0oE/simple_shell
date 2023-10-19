@@ -99,10 +99,17 @@ int is_exit(char **input_args, char *input_line)
 {
 	if (_strcmp(input_args[0], "exit") == 0)
 	{
+		if (input_args[1])
+		{
+			free(input_line);
+			free_my_array(input_args);
+			free(input_args);
+			exit(_atoi(input_args[1]));
+		}
 		free(input_line);
 		free_my_array(input_args);
 		free(input_args);
-		exit(EXIT_SUCCESS);
+		exit(0);
 	}
 	return (1);
 }
